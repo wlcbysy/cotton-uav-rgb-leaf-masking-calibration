@@ -1,0 +1,54 @@
+{
+  "status": "ADDITIVE_EXPLORATORY_RESULTS",
+  "baseline_commit": "dc06425",
+  "branch": "codex/data-mining-20261106",
+  "original_model_code_unchanged": true,
+  "fixed_support": {
+    "2023_F1": 24,
+    "2024_F1": 19,
+    "2024_F2": 21
+  },
+  "weather": {
+    "base_temperature_C": 10,
+    "formula": "max(T_mean - 10, 0)",
+    "accumulation": "April 15 sowing day inclusive through flight day inclusive",
+    "source": "01_Data/processed/weather/alar_2023_2024_daily_weather.csv",
+    "shared_2024_weather": true
+  },
+  "recursive_features": {
+    "C": [
+      "latest green_canopeo",
+      "latest exg_all_valid_mean"
+    ],
+    "T": [
+      "trapezoidal cover integral / actual elapsed history",
+      "last observed cover slope × total elapsed history"
+    ],
+    "first_observation": "AUC=cover; change=0; no earlier observation assumed",
+    "horizon": "Each target flight defines one cutoff; source and target images must not exceed the same DAS/GDD cutoff; may have unequal counts; no future interpolation",
+    "support": "Original 64 common-date plots retained, even before those common dates; retrospective support selection limitation"
+  },
+  "growth": {
+    "selection": "minimum AICc across bounded single logistic (signed rate, 3 parameters) and double logistic (5 parameters), two initializations each",
+    "peak_domain": "Observed DAS window only; boundary peaks are censored, not identified physiological peaks",
+    "feature_availability": "Whole season through 181 DAS; retrospective, not early forecasting",
+    "failure_policy": "Write optimization failures and boundary flags; no silent support exclusion or imputation"
+  },
+  "conformal": {
+    "user_decision": "strict whole-block splits, report infinity/non-estimability",
+    "rank": "ceil((n_cal+1)*0.9); augment calibration score distribution with +infinity",
+    "source_calibration_non_N0_n": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "source_fits": "Existing outer-block fits already exclude calibration block in fitting/tuning; residual audit reads those frozen predictions",
+    "center_fit": "No extra center fit performed because +infinity radius is independent of center and of N0 offset",
+    "within_field": "Not estimable under original nested block protocol after disjoint training/calibration/test blocks",
+    "domain_shift": "No exchangeability guarantee across fields/years; one calibration block also precludes block-level finite 90% quantile"
+  },
+  "whole_block_intervals": "27 ordered bootstrap draws of three target blocks; fixed prediction fits; pointwise conditional intervals only",
+  "optional_GLCM": "Not performed; prioritized required analyses",
+  "external_submission": false
+}

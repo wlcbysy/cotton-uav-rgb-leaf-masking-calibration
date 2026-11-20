@@ -1,0 +1,10 @@
+Pooled source environments (6 blocks),Target environment,nsrc,Model specification,Selected α,Uncalibrated Total RMSE,Within-N RMSE,ΔWithin-N vs. N-only,+3N0 Total RMSE,Δ(+3N0) vs. N+3N0
+2024 F1 + 2024 F2,2023 F1,40,N-only,0 (unpenalized),1150.9,515.9,0.0,772.5,0.0
+2024 F1 + 2024 F2,2023 F1,40,N+C+T,0.1,1451.1,509.1,6.7,632.3,140.2
+2024 F1 + 2024 F2,2023 F1,40,N+Leaf+T,0.1,1474.9,512.2,3.6,637.1,135.4
+2023 F1 + 2024 F2,2024 F1,45,N-only,0 (unpenalized),659.0,475.7,0.0,757.8,0.0
+2023 F1 + 2024 F2,2024 F1,45,N+C+T,100000,658.9,475.7,0.0,757.7,0.1
+2023 F1 + 2024 F2,2024 F1,45,N+Leaf+T,100000,658.9,475.7,0.0,757.7,0.1
+2023 F1 + 2024 F1,2024 F2,43,N-only,0 (unpenalized),915.9,282.0,0.0,412.3,0.0
+2023 F1 + 2024 F1,2024 F2,43,N+C+T,100,904.7,254.8,27.2,405.3,7.0
+2023 F1 + 2024 F1,2024 F2,43,N+Leaf+T,10,851.3,233.5,48.5,393.2,19.1

@@ -1,0 +1,5 @@
+pipeline,gsd_label,valid_pixels_per_plot,ms_per_plot_cpu,sec_per_ha_cpu
+Decoupled RGB (Canopeo + NGRDI_leaf + Gaps) @ 3.3 mm,3.3 mm,1809649,49.04,32.53
+Decoupled RGB (Canopeo + NGRDI_leaf + Gaps) @ 1 cm,1 cm,202735,14.73,9.77
+Decoupled RGB (Canopeo + NGRDI_leaf + Gaps) @ 5 cm,5 cm,6313,0.59,0.39
+"ResNet-50 feature extraction (CPU 4 threads, single 224x224 ROI)",224x224 resized,50176,13.61,9.03

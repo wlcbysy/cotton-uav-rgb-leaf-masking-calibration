@@ -1,0 +1,5 @@
+quadrant,n_plots,mean_N_kg_ha,n_N0_plots,mean_I_Leaf_Phys,mean_I_Gap_Struct,mean_obs_blk_anom_Mg_ha,sd_obs_blk_anom_Mg_ha,mean_obs_within_NB_Mg_ha,mean_in_sample_pred_Mg_ha,mean_lobo_pred_Mg_ha,mean_lodo_pred_Mg_ha,in_sample_R2,in_sample_r,lobo_R2,lobo_r,lobo_p,lodo_R2,lodo_r,in_sample_RMSE_Mg_ha,lobo_RMSE_Mg_ha
+Q1_Optimal_Intact,31,309.7,0,0.572,-0.589,0.731,0.564,0.001,0.759,0.763,0.742,0.6668,0.8166,0.5847,0.7666,1.5391045363218637e-13,0.4832,0.7052,0.7313,0.8164
+Q2_Stand_Gap_Limited,7,310.7,0,0.544,0.498,0.391,0.805,-0.142,0.042,-0.055,-0.165,0.6668,0.8166,0.5847,0.7666,1.5391045363218637e-13,0.4832,0.7052,0.7313,0.8164
+Q3_N_Senescence_Limited,11,225.0,0,-0.509,-0.544,0.285,0.86,0.132,0.01,-0.003,0.009,0.6668,0.8166,0.5847,0.7666,1.5391045363218637e-13,0.4832,0.7052,0.7313,0.8164
+Q4_Dual_Stressed,15,35.0,9,-1.062,1.384,-1.903,0.802,-0.033,-1.595,-1.549,-1.464,0.6668,0.8166,0.5847,0.7666,1.5391045363218637e-13,0.4832,0.7052,0.7313,0.8164

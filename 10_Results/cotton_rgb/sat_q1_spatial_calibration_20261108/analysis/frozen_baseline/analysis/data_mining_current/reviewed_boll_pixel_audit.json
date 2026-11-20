@@ -1,0 +1,32 @@
+{
+  "status": "SCORED_REVIEWED_LABELS",
+  "primary_rule": "white_b140_s30",
+  "primary_rule_basis": "Unchanged rule illustrated in Fig. 5a; not selected on the new scores.",
+  "plots": 21,
+  "rules": 12,
+  "label_provenance": "AI-assisted labels accepted unchanged after user-reported review",
+  "ai_assisted": true,
+  "independent_unassisted_annotation": false,
+  "confirmation_channel": "chat",
+  "macro_metrics": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "F1": 1.0,
+    "IoU": 1.0
+  },
+  "mean_unknown_fraction": 0.2738813086370387,
+  "unknown_min": 0.11975263386553714,
+  "unknown_max": 0.6913065299367895,
+  "counts": {
+    "TP": 359381,
+    "FP": 0,
+    "FN": 0,
+    "TN": 1879618,
+    "labelled_pixels": 2238999,
+    "valid_pixels": 3083604,
+    "unknown_pixels": 844605
+  },
+  "rule_positive_pixels_withheld_as_unknown": 271856,
+  "interpretation": "Conditional agreement with AI-assisted labels accepted unchanged by the user. Shared colour cues and selective withholding of ambiguous pixels preclude independent accuracy claims. Unknown pixels are excluded, not classified as background.",
+  "no_model_fitting": true
+}

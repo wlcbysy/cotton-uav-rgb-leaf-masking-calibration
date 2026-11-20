@@ -1,0 +1,109 @@
+source,target,evaluation,model,calibration_block,calibration_n,quantile_rank,target_n,coverage,mean_width,status,reason,support,target_N0_labels,exchangeability_guarantee
+2023_F1,2023_F1,BlockCV,N-only,1,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2023_F1,2023_F1,BlockCV,N-only,2,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2023_F1,2023_F1,BlockCV,N-only,3,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2023_F1,2023_F1,BlockCV,N+N0,1,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,3,False
+2023_F1,2023_F1,BlockCV,N+N0,2,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,3,False
+2023_F1,2023_F1,BlockCV,N+N0,3,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,3,False
+2023_F1,2023_F1,BlockCV,N+C+T,1,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2023_F1,2023_F1,BlockCV,N+C+T,2,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2023_F1,2023_F1,BlockCV,N+C+T,3,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2023_F1,2023_F1,BlockCV,ResNet-50,1,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2023_F1,2023_F1,BlockCV,ResNet-50,2,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2023_F1,2023_F1,BlockCV,ResNet-50,3,7,8,21,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2023_F1,2024_F1,cross_year,N-only,1,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F1,cross_year,N-only,2,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F1,cross_year,N-only,3,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F1,cross_year,N+N0,1,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2023_F1,2024_F1,cross_year,N+N0,2,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2023_F1,2024_F1,cross_year,N+N0,3,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2023_F1,2024_F1,cross_year,N+C+T,1,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F1,cross_year,N+C+T,2,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F1,cross_year,N+C+T,3,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F1,cross_year,ResNet-50,1,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F1,cross_year,ResNet-50,2,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F1,cross_year,ResNet-50,3,7,8,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F2,cross_year,N-only,1,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F2,cross_year,N-only,2,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F2,cross_year,N-only,3,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F2,cross_year,N+N0,1,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2023_F1,2024_F2,cross_year,N+N0,2,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2023_F1,2024_F2,cross_year,N+N0,3,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2023_F1,2024_F2,cross_year,N+C+T,1,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F2,cross_year,N+C+T,2,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F2,cross_year,N+C+T,3,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F2,cross_year,ResNet-50,1,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F2,cross_year,ResNet-50,2,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2023_F1,2024_F2,cross_year,ResNet-50,3,7,8,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2023_F1,cross_year,N-only,1,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2023_F1,cross_year,N-only,2,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2023_F1,cross_year,N-only,3,4,5,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2023_F1,cross_year,N+N0,1,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F1,2023_F1,cross_year,N+N0,2,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F1,2023_F1,cross_year,N+N0,3,4,5,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F1,2023_F1,cross_year,N+C+T,1,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2023_F1,cross_year,N+C+T,2,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2023_F1,cross_year,N+C+T,3,4,5,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2023_F1,cross_year,ResNet-50,1,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2023_F1,cross_year,ResNet-50,2,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2023_F1,cross_year,ResNet-50,3,4,5,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2024_F1,BlockCV,N-only,1,6,7,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F1,2024_F1,BlockCV,N-only,2,6,7,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F1,2024_F1,BlockCV,N-only,3,4,5,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F1,2024_F1,BlockCV,N+N0,1,6,7,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,3,False
+2024_F1,2024_F1,BlockCV,N+N0,2,6,7,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,3,False
+2024_F1,2024_F1,BlockCV,N+N0,3,4,5,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,3,False
+2024_F1,2024_F1,BlockCV,N+C+T,1,6,7,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F1,2024_F1,BlockCV,N+C+T,2,6,7,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F1,2024_F1,BlockCV,N+C+T,3,4,5,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F1,2024_F1,BlockCV,ResNet-50,1,6,7,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F1,2024_F1,BlockCV,ResNet-50,2,6,7,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F1,2024_F1,BlockCV,ResNet-50,3,4,5,16,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F1,2024_F2,adjacent_field,N-only,1,6,7,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2024_F2,adjacent_field,N-only,2,6,7,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2024_F2,adjacent_field,N-only,3,4,5,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2024_F2,adjacent_field,N+N0,1,6,7,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F1,2024_F2,adjacent_field,N+N0,2,6,7,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F1,2024_F2,adjacent_field,N+N0,3,4,5,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F1,2024_F2,adjacent_field,N+C+T,1,6,7,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2024_F2,adjacent_field,N+C+T,2,6,7,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2024_F2,adjacent_field,N+C+T,3,4,5,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2024_F2,adjacent_field,ResNet-50,1,6,7,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2024_F2,adjacent_field,ResNet-50,2,6,7,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F1,2024_F2,adjacent_field,ResNet-50,3,4,5,18,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2023_F1,cross_year,N-only,1,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2023_F1,cross_year,N-only,2,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2023_F1,cross_year,N-only,3,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2023_F1,cross_year,N+N0,1,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F2,2023_F1,cross_year,N+N0,2,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F2,2023_F1,cross_year,N+N0,3,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F2,2023_F1,cross_year,N+C+T,1,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2023_F1,cross_year,N+C+T,2,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2023_F1,cross_year,N+C+T,3,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2023_F1,cross_year,ResNet-50,1,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2023_F1,cross_year,ResNet-50,2,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2023_F1,cross_year,ResNet-50,3,6,7,21,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2024_F1,adjacent_field,N-only,1,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2024_F1,adjacent_field,N-only,2,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2024_F1,adjacent_field,N-only,3,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2024_F1,adjacent_field,N+N0,1,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F2,2024_F1,adjacent_field,N+N0,2,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F2,2024_F1,adjacent_field,N+N0,3,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,3,False
+2024_F2,2024_F1,adjacent_field,N+C+T,1,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2024_F1,adjacent_field,N+C+T,2,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2024_F1,adjacent_field,N+C+T,3,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2024_F1,adjacent_field,ResNet-50,1,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2024_F1,adjacent_field,ResNet-50,2,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2024_F1,adjacent_field,ResNet-50,3,6,7,16,1.0,inf,VACUOUS_INFINITY,rank exceeds calibration n; no finite 90% split-conformal radius,non_N0_held_out,0,False
+2024_F2,2024_F2,BlockCV,N-only,1,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F2,2024_F2,BlockCV,N-only,2,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F2,2024_F2,BlockCV,N-only,3,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F2,2024_F2,BlockCV,N+N0,1,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,3,False
+2024_F2,2024_F2,BlockCV,N+N0,2,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,3,False
+2024_F2,2024_F2,BlockCV,N+N0,3,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,3,False
+2024_F2,2024_F2,BlockCV,N+C+T,1,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F2,2024_F2,BlockCV,N+C+T,2,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F2,2024_F2,BlockCV,N+C+T,3,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F2,2024_F2,BlockCV,ResNet-50,1,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F2,2024_F2,BlockCV,ResNet-50,2,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False
+2024_F2,2024_F2,BlockCV,ResNet-50,3,6,7,18,,,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,outer test plus independent calibration leaves one training block; original inner block tuning impossible,non_N0_held_out,0,False

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "candidate_id": "SAT-RGB-FIELD-DENSE-ORIENTATION-CORRECTED-CANDIDATE-20260827",
+  "status": "AUTHOR_CONFIRMED",
+  "extraction_authorized": true,
+  "author_name": "Anonymized",
+  "confirmed_at": "2026-08-27T00:00:00+08:00",
+  "scope": "Three author-reviewed year-field visible physical-plot boundary sets, plot IDs, N treatments, blocks, numbering, and 72 fixed within-plot ROIs.",
+  "proposal_gpkg": "spatial/proposed/spatial_proposal.gpkg",
+  "proposal_layers": [
+    "visible_compartment",
+    "declared_full_plot",
+    "fixed_roi",
+    "control_points",
+    "roi_approval"
+  ],
+  "approved_full_plot_source": "visible_compartment",
+  "prohibited_promotion_source": "declared_full_plot",
+  "approved_gpkg": "spatial/approved/field_authority.gpkg",
+  "approved_layers": [
+    "full_plot",
+    "fixed_roi",
+    "roi_approval"
+  ],
+  "year_fields": [
+    {
+      "year": 2023,
+      "field": "F1",
+      "scope_id": "2023_f1",
+      "gpkg": "spatial/proposed/spatial_proposal.gpkg",
+      "overlay": "previews/spatial/2023_f1_spatial_proposal.png",
+      "visible_physical_plot_proposal_n": 24,
+      "conflicting_54_72_alternative_n": 24,
+      "fixed_roi_n": 24,
+      "analysis_used_n": 24,
+      "proposal_visible_area_median_m2": 24.04359114491215,
+      "plot_area_decision": "Author confirmed the visible-compartment boundaries as the physical plots; 22.8 m2 is the nominal design area and 54.72 m2 remains audit-only and was not promoted."
+    },
+    {
+      "year": 2024,
+      "field": "F1",
+      "scope_id": "2024_f1",
+      "gpkg": "spatial/proposed/spatial_proposal.gpkg",
+      "overlay": "previews/spatial/2024_f1_spatial_proposal.png",
+      "visible_physical_plot_proposal_n": 24,
+      "conflicting_54_72_alternative_n": 24,
+      "fixed_roi_n": 24,
+      "analysis_used_n": 21,
+      "proposal_visible_area_median_m2": 23.939543791075728,
+      "plot_area_decision": "Author confirmed the visible-compartment boundaries as the physical plots; 22.8 m2 is the nominal design area and 54.72 m2 remains audit-only and was not promoted."
+    },
+    {
+      "year": 2024,
+      "field": "F2",
+      "scope_id": "2024_f2",
+      "gpkg": "spatial/proposed/spatial_proposal.gpkg",
+      "overlay": "previews/spatial/2024_f2_spatial_proposal.png",
+      "visible_physical_plot_proposal_n": 24,
+      "conflicting_54_72_alternative_n": 24,
+      "fixed_roi_n": 24,
+      "analysis_used_n": 21,
+      "proposal_visible_area_median_m2": 24.699881249162473,
+      "plot_area_decision": "Author confirmed the visible-compartment boundaries as the physical plots; 22.8 m2 is the nominal design area and 54.72 m2 remains audit-only and was not promoted."
+    }
+  ],
+  "author_statement": "作者确认田块与ROI划分正确，并授权根据原始田间布置纠正Field 1东西编号后重新计算。",
+  "interpretation": "The user confirmed all displayed boundaries, positions, numbering, treatment/block assignments, and fixed ROIs. The visible_compartment layer alone was promoted. The conflicting 54.72 m2 alternative remains only in the proposal audit package.",
+  "file_sha256": {
+    "spatial/proposed/spatial_proposal.gpkg": "5a820eb72a9d96062519ef17c65ac08fa74c9c51154ff2233204b5c81d52fb78",
+    "spatial/approved/field_authority.gpkg": "2260472fda3246d7b9b5312bad19891f355b5bc33903fd85a53c14af1685b881",
+    "previews/spatial/2023_f1_spatial_proposal.png": "f480c633f588cd6f3c7ced8b188200233ad559275f9e36d03168ee54e88c30e5",
+    "previews/spatial/2024_f1_spatial_proposal.png": "8953867edb211a4bb49af63113100a463c01a9fd35bef70688304d6a25907f49",
+    "previews/spatial/2024_f2_spatial_proposal.png": "820d7df3705f76708a099a4aa76913e013929812da0dcf3e957df850ed0ceefa"
+  }
+}

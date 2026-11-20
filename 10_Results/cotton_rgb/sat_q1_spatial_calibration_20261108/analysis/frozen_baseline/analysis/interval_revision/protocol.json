@@ -1,0 +1,14 @@
+{
+  "method": "Fixed-center pooled source out-of-fold residual intervals (requested CV+ approximation)",
+  "formula": "q = score_(ceil(0.90*(n+1))); interval = frozen target prediction + stored N0 offset if applicable +/- q",
+  "standard_CV_plus": false,
+  "reason": "Standard CV+ aggregates fold-specific target predictions +/- paired residuals; frozen full-source centers omit that variation.",
+  "guarantee": "CV+ theory requires exchangeability and further fold assumptions; it does not transfer automatically across fields/years. This fixed-center approximation has no standard CV+ finite-sample guarantee even in source domain.",
+  "N0": "Use source N-only OOF residuals unchanged; use the already stored target three-N0 shift for the target center; no target holdout labels used in construction.",
+  "uncertainty": "27 ordered resamples of three target blocks, conditional on frozen intervals; descriptive pointwise 95% percentile limits, not reliable new-domain uncertainty.",
+  "sources": {
+    "10_Results/cotton_rgb/sat_full_figure_label_legend_sync_20260901/analysis/raw_rgb_mining/support_predictions.csv": "0b2ff4f873dac3990e74ab2df014d6cc5c2cf9f5b1a9df1fd9d02c187d95bf6b",
+    "10_Results/cotton_rgb/sat_full_figure_label_legend_sync_20260901/analysis/method_strengthening/resnet50_partial_ridge_predictions.csv": "e4bfbbf9538b1bd3337d595aa089f52bbe9be31dd03af154a48b4b42ea0dc3df",
+    "10_Results/cotton_rgb/sat_full_figure_label_legend_sync_20260901/analysis/method_strengthening/transfer_intercept_diagnostics.csv": "7150af3c271fefd083e4ff898b4f25589d7fb677f85afb365dfb68455593648c"
+  }
+}
