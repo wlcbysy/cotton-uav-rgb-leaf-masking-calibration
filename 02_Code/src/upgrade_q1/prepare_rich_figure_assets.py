@@ -748,7 +748,7 @@ def build_direction_b_assets() -> None:
     sys.path.insert(0, str(ROOT / '02_Code/src/modeling'))
     import mine_raw_rgb_information as legacy_pr
     plot64_mm = pd.read_csv(Q1_DIR / 'plot64_millimeter_features.csv')
-    ai_tune_mm = pd.read_csv(OLD_MINING / 'ai_reference/AI_source_tuning.csv')
+    ai_tune_mm = pd.read_csv(Q1_DIR / 'source_boll_mask_rules.csv')
     frames_mm = {dom: d.reset_index(drop=True) for dom, d in plot64_mm.groupby('domain')}
     n_leaf_bm_rows = []
     for src_m in ['2023_F1', '2024_F1', '2024_F2']:

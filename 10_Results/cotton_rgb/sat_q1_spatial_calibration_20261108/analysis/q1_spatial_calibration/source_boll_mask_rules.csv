@@ -1,0 +1,16 @@
+source,role,specification,mask_rule
+2023_F1,BlockCV_hold_1,N_C_T_B,white_b120_s20
+2023_F1,BlockCV_hold_2,N_C_T_B,white_b140_s20
+2023_F1,BlockCV_hold_3,N_C_T_B,white_b160_s20
+2023_F1,cross_year_hold_0,N_C_T_B,white_b140_s20
+2023_F1,cross_year_hold_0,N_C_T_B,white_b140_s20
+2024_F1,BlockCV_hold_1,N_C_T_B,white_b120_s20
+2024_F1,BlockCV_hold_2,N_C_T_B,white_b120_s20
+2024_F1,BlockCV_hold_3,N_C_T_B,white_b120_s20
+2024_F1,cross_year_hold_0,N_C_T_B,white_b120_s20
+2024_F1,adjacent_field_hold_0,N_C_T_B,white_b120_s20
+2024_F2,BlockCV_hold_1,N_C_T_B,white_b120_s30
+2024_F2,BlockCV_hold_2,N_C_T_B,white_b140_s30
+2024_F2,BlockCV_hold_3,N_C_T_B,white_b140_s30
+2024_F2,cross_year_hold_0,N_C_T_B,white_b140_s30
+2024_F2,adjacent_field_hold_0,N_C_T_B,white_b140_s30

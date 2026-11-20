@@ -1,21 +1,20 @@
 # Leaf-masked UAV RGB for cotton diagnosis and yield prediction
 
-Code and source data for **“Leaf-masked UAV RGB decouples nitrogen deficit from canopy openness and stabilizes few-shot cross-environment yield prediction in mulched cotton”**, prepared for *Artificial Intelligence in Agriculture*.
+Code and processed source data for **“Leaf-masked UAV RGB decouples nitrogen deficit from canopy openness and stabilizes few-shot cross-environment yield prediction in mulched cotton”**, prepared for *Artificial Intelligence in Agriculture*. This title matches the current manuscript.
 
-## Contents
+## Repository contents
 
-- `01_Data/processed/`: processed model-ready observations, spatial plot boundaries, and small reconstructed image patches. The 15 TIFFs here are reconstructed plot patches, not the original orthomosaics.
-- `02_Code/src/upgrade_q1/`: analysis, ablation, and plotting scripts; `02_Code/src/data/`, `02_Code/src/modeling/`, and `02_Code/utilities/` contain supporting code.
-- `10_Results/cotton_rgb/sat_q1_spatial_calibration_20261108/analysis/q1_spatial_calibration/`: multi-scale features, predictions, precomputed inputs, and ablation results.
-- `10_Results/cotton_rgb/sat_q1_spatial_calibration_20261108/analysis/frozen_baseline/`: source tables and prior analysis outputs used by the current scripts. The published copy has identifying paths and annotator names removed; it is not a byte-identical copy of the internal frozen baseline.
+- `01_Data/processed/`: model-ready observations, plot boundaries, and small reconstructed image patches; the 15 TIFF files are reconstructed plot patches, not original orthomosaics.
+- `02_Code/src/upgrade_q1/`: analysis, ablation and plotting scripts. `02_Code/src/data/`, `02_Code/src/modeling/`, and `02_Code/utilities/` contain supporting code.
+- `10_Results/cotton_rgb/sat_q1_spatial_calibration_20261108/analysis/q1_spatial_calibration/`: multiscale features, predictions, figure inputs, and analysis tables.
+- `10_Results/cotton_rgb/sat_q1_spatial_calibration_20261108/analysis/frozen_baseline/`: source tables and earlier outputs needed by current analyses. This public copy has identifying paths and names removed and is not byte-identical to the internal baseline.
 - `10_Results/cotton_rgb/sat_q1_spatial_calibration_20261108/tables/q1_current/`: machine-readable manuscript tables.
-- `00_Project/annotation/`: 21-patch boll annotation materials and provenance.
 
-Raw GeoTIFF orthomosaics are not distributed here and are available from the corresponding author upon reasonable request. Paths to raw images in released tables are project-relative references, not included files. Private sampling manifests, personal paths, and names in operational annotation metadata were removed. The external China basemap is excluded; users must obtain external map layers under their own applicable terms. The daily weather table is also excluded because its original acquisition record and redistribution terms have not been established in the project ledger.
+The two supplementary figures are **Fig. S1**, forward-only recursive forecast trajectories across calendar and thermal time, and **Fig. S2**, 2024 Field 1 plot-level spatial residual maps and Moran's I.
+
+Raw GeoTIFF orthomosaics are available from the corresponding author upon reasonable request and are not distributed here. Paths in released tables referring to raw imagery are project-relative. The external China basemap and the daily weather table are excluded; the latter's original acquisition and redistribution terms have not been established.
 
 ## Environment
-
-From the repository root, create a Python environment and install the dependencies:
 
 ```bash
 python3 -m venv .venv
@@ -23,26 +22,33 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-Core analysis and figure commands below were tested with Python 3.14, NumPy 2.4.6, pandas 3.0.3, SciPy 1.16.3, Matplotlib 3.11.0, scikit-learn 1.9.0, GeoPandas 1.1.3, and Rasterio 1.5.0. For the ResNet-50 image-feature extraction, additionally install compatible `torch` and `torchvision` builds for the chosen platform; pretrained ImageNet weights may need downloading. Raw-image workflows also require the orthomosaics and appropriate raster paths.
+Core commands were tested with Python 3.14, NumPy 2.4.6, pandas 3.0.3, SciPy 1.16.3, Matplotlib 3.11.0, scikit-learn 1.9.0, GeoPandas 1.1.3, and Rasterio 1.5.0. ResNet-50 image-feature extraction additionally requires compatible `torch` and `torchvision` builds and pretrained ImageNet weights.
 
 ## Reproduce selected results
 
-Run from the repository root. The following were tested using the distributed processed inputs. Outputs are written under the `10_Results/.../` tree; work on a copy if the released inputs need to remain unchanged.
+Run from the repository root. Outputs are written inside the `10_Results/.../` tree; work on a copy to preserve the released input files.
 
 ```bash
 python reproduce.py fig3
 python reproduce.py fig4
 python reproduce.py fig5
 python reproduce.py fig6
+python reproduce.py figs1
 python reproduce.py ablation-2x2
 ```
 
-`fig3`–`fig6` render the corresponding main figures to `figures/main/`; font availability can affect appearance. `ablation-2x2` reruns the mask × index comparison across spatial resolutions and writes `ablation_2x2_index_mask_multiscale.csv`. Other ablation results, including the ResNet-50 and normalization comparisons, are included as CSVs. Their full scripts are `02_Code/src/upgrade_q1/run_peer_review_ablations.py` and `run_post_review_revisions.py`; some stages require the raw orthomosaics, pretrained weights, or other original project resources and were not verified from this distribution alone. Full figure generation (`python 02_Code/src/upgrade_q1/plot_q1_upgraded_figures.py`) also requires raw imagery, the weather table, external basemaps and pre-existing project assets; it is not a self-contained command from this archive. The local manuscript/DOCX package builder depends on additional project and system resources and is included as workflow context, not as a verified standalone release command.
+These commands use the distributed processed inputs. `fig3`–`fig6` generate the corresponding main figures, `figs1` generates supplementary Fig. S1, and `ablation-2x2` reruns the masking × index comparison across spatial resolutions. Fonts may affect figure appearance.
 
-## Verification record provenance
+To reproduce **Fig. S2**, first obtain the 2024 Field 1 orthomosaic from the corresponding author and place it at `01_Data/raw/remote_sensing/orthomosaics/2024/2024-08-21_f01_visible_orthomosaic.tif`, then run:
 
-The 2,808 records used by the Figure S1 plotting script are in `analysis/frozen_baseline/analysis/raw_rgb_mining/ai_reference/AI_reference_points.csv`. Their labels are AI visual interpretations, not an independent human reference; see `ai_labels.json` and the `independent_human_reference` field. The separate `human_reference_points.csv` retains its recorded `DISPLAY_CORRESPONDENCE_NOT_VERIFIED` and `usable_for_independent_accuracy=False` flags. The 21-patch boll labels were AI-assisted and accepted after user-reported review; they are not independent unassisted annotations. These distinctions matter when interpreting segmentation metrics.
+```bash
+python reproduce.py figs2
+```
+
+The spatial residual and Moran's I tables used by this figure are included. Full raw-image processing, other analyses, Fig. 1, and Fig. 2 may require additional orthomosaics, pretrained weights, external basemaps, the weather table, and original project resources; those workflows are not validated as self-contained from this release.
+
+The released source-specific and held-out-block boll mask selections are in `source_boll_domain_rules.csv` and `source_boll_mask_rules.csv` in the `q1_spatial_calibration` directory. These selections retain the rules used by the existing analysis scripts; they vary by source and fold. They are supplied to make the existing analysis traceable and are not evidence that every model used one fixed threshold.
 
 ## License
 
-The authors' code is licensed under the MIT License in [LICENSE](LICENSE). The authors' processed data and annotations are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Third-party software, pretrained weights, and external geographic resources retain their respective licenses; this repository does not relicense them. Please cite the article and repository when using these materials.
+The authors' code is licensed under the MIT License in [LICENSE](LICENSE). The authors' processed data are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Third-party software, pretrained weights, and geographic resources retain their respective licenses. Please cite the article and repository when using these materials.

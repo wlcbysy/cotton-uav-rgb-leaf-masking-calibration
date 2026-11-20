@@ -348,12 +348,9 @@ def build_common4_plot_table(df_slots: pd.DataFrame) -> pd.DataFrame:
     common_base = pd.read_csv(OLD_MINING / 'common_plot_features_common_DAS.csv')[
         ['domain', 'year', 'field', 'plot_id', 'block_design', 'N_kg_ha', 'yield_kg_ha']
     ]
-    ai_mask = pd.read_csv(OLD_MINING / 'ai_reference/AI_mask_validation_metrics.csv')
-    # Source-calibrated cotton rule per domain (for descriptive reference; nested CV uses source rule!)
-    dom_rules = {
-        dom: ai_mask.query("phase=='cotton' and calibration_source==@dom and validation_domain==@dom").mask_rule.item()
-        for dom in ['2023_F1', '2024_F1', '2024_F2']
-    }
+    domain_rules = pd.read_csv(OUT / 'source_boll_domain_rules.csv')
+    dom_rules = dict(zip(domain_rules.calibration_source, domain_rules.mask_rule))
+    assert set(dom_rules) == {'2023_F1', '2024_F1', '2024_F2'}
 
     rows = []
     for r in common_base.itertuples():
@@ -546,7 +543,7 @@ def evaluate_specs_nested(plot64: pd.DataFrame, tag_prefix: str = ''):
                     })
 
     # Also evaluate source-nested 181-DAS Boll Raw vs Boll Morphology!
-    ai_tune = pd.read_csv(OLD_MINING / 'ai_reference/AI_source_tuning.csv')
+    ai_tune = pd.read_csv(OUT / 'source_boll_mask_rules.csv')
     for src, tgt, ev in tasks:
         a = frames[src]
         b = frames[tgt]

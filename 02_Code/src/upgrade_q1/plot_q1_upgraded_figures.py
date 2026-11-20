@@ -141,10 +141,8 @@ MAIN_STEMS = (
 )
 
 SUPP_STEMS = (
-    'Figure_S1_segmentation_audit',
-    'Figure_S2_boll_threshold_sensitivity',
-    'Figure_S3_recursive_timing',
-    'Figure_S4_spatial_residuals_2024F1',
+    'Figure_S1_recursive_timing',
+    'Figure_S2_spatial_residuals_2024F1',
 )
 
 
@@ -2407,114 +2405,15 @@ def save_supp_fig(fig: plt.Figure, stem: str) -> None:
 
 
 # ==============================================================================
-# SUPPLEMENTARY FIGURE S9: 21-Crop Boll Morphological Upper-Threshold Sensitivity
 #                          Diagnostic (Precision, Recall, F1, CDF & Yield r)
 # ==============================================================================
-def render_figure_s9() -> None:
-    fs.apply()
-    fig_w_mm, fig_h_mm = 180.0, 68.0
-    # Figure setup with internal helper functions for coordinate normalization
-    def _y(y_old: float) -> float:
-        return y_old
-    def _h(h_old: float) -> float:
-        return h_old
-
-    fig = plt.figure(figsize=(fig_w_mm / 25.4, fig_h_mm / 25.4), facecolor='white')
-
-    sens = pd.read_csv(Q1_DIR / 'boll_cc_threshold_sensitivity_21crops.csv')
-    sens = sens[sens['rule'] == 'white_b140_s30'].reset_index(drop=True)
-    comp = pd.read_csv(Q1_DIR / 'boll_cc_components_21crops.csv')
-
-    y0, h0 = 0.18, 0.70
-    fig.text(0.012, 0.95, 'a', fontweight='bold', fontsize=9, color='#111111', va='top', ha='left')
-    fig.text(0.352, 0.95, 'b', fontweight='bold', fontsize=9, color='#111111', va='top', ha='left')
-    fig.text(0.682, 0.95, 'c', fontweight='bold', fontsize=9, color='#111111', va='top', ha='left')
-
-    # Panel a: Precision, Recall, F1 across upper area cutoffs on 21 reviewed crops
-    ax_a = fig.add_axes([0.068, y0, 0.258, h0], facecolor='white')
-    ax_a.set_axisbelow(True)
-    ax_a.grid(axis='both', lw=0.38, color='#F1F5F9', zorder=0.5)
-    xk = np.arange(len(sens), dtype=float)
-    xlbls = ['30', '60', '90', '120', '150', '200', '300', '400', '∞']
-    ax_a.axvline(3.0, color=PALETTE['amber'], lw=0.85, ls='--', zorder=1.8)
-
-    ax_a.plot(xk, sens['macro_precision'], 'o-', color=PALETTE['cerulean'], lw=1.05, ms=3.4, label='Precision (known)', zorder=3.5)
-    ax_a.plot(xk, sens['macro_recall'], 's-', color=PALETTE['teal'], lw=1.05, ms=3.4, label='Recall', zorder=3.6)
-    ax_a.plot(xk, sens['macro_F1'], 'D-', color=PALETTE['plum'], lw=1.15, ms=3.6, label=r'$F_1$ (known)', zorder=3.8)
-    ax_a.plot(xk, sens['macro_precision_art_bg'], '^--', color=PALETTE['ochre'], lw=0.95, ms=3.4, label='Precision (+glare)', zorder=3.4)
-    ax_a.plot(xk, sens['macro_F1_art_bg'], 'v--', color=PALETTE['crimson'], lw=0.95, ms=3.4, label=r'$F_1$ (+glare)', zorder=3.4)
-
-    ax_a.set_xlim(-0.3, len(sens) - 0.7)
-    ax_a.set_ylim(0.38, 1.05)
-    ax_a.set_xticks(xk)
-    ax_a.set_xticklabels(xlbls, fontsize=7.0)
-    ax_a.set_yticks([0.4, 0.6, 0.8, 1.0])
-    ax_a.set_xlabel(r'Upper area threshold ($\mathrm{cm^2}$)', fontsize=7.5, labelpad=2.0)
-    ax_a.set_ylabel('Segmentation metric', fontsize=7.5, labelpad=2.0)
-    style_axis(ax_a)
-    ax_a.legend(loc='lower right', frameon=True, facecolor='white', edgecolor='none', framealpha=0.90,
-                fontsize=7.0, handlelength=0.95, handletextpad=0.20, borderpad=0.05, labelspacing=0.10)
-
-    # Panel b: Empirical Cumulative Pixel Share vs Connected-Component Area (21 reviewed crops)
-    ax_b = fig.add_axes([0.404, y0, 0.252, h0], facecolor='white')
-    ax_b.set_axisbelow(True)
-    ax_b.grid(axis='both', lw=0.38, color='#F1F5F9', zorder=0.5)
-    ax_b.axvline(120.0, color=PALETTE['amber'], lw=0.85, ls='--', zorder=2.0)
-
-    comp_ge05 = comp[comp['area_cm2'] >= 0.5]
-    c_boll = comp_ge05[comp_ge05['fiber_px'] > 0].sort_values('area_cm2')
-    xb_area = c_boll['area_cm2'].to_numpy(float)
-    yb_cdf = np.cumsum(c_boll['fiber_px'].to_numpy(float)) / max(1.0, float(c_boll['fiber_px'].sum())) * 100.0
-    ax_b.plot(xb_area, yb_cdf, '-', color=PALETTE['plum'], lw=1.20, label='Confirmed boll pixels', zorder=3.6)
-
-    c_art = comp_ge05[comp_ge05['in_artifact_rect_px'] > 0].sort_values('area_cm2')
-    xa_area = c_art['area_cm2'].to_numpy(float)
-    ya_cdf = np.cumsum(c_art['in_artifact_rect_px'].to_numpy(float)) / max(1.0, float(c_art['in_artifact_rect_px'].sum())) * 100.0
-    ax_b.plot(xa_area, ya_cdf, '--', color=PALETTE['amber'], lw=1.10, label='Glare/artifact pixels', zorder=3.4)
-
-    pct_boll_120 = float(c_boll[c_boll['area_cm2'] <= 120.0]['fiber_px'].sum() / max(1.0, float(c_boll['fiber_px'].sum())) * 100.0)
-    ax_b.text(124.0, 26.0, rf'$120\ \mathrm{{cm^2}}$' + f'\n({pct_boll_120:.1f}% bolls)', fontsize=7.0, color=PALETTE['ochre'], ha='left', va='bottom')
-    ax_b.set_xscale('log')
-    ax_b.set_xlim(0.45, 900.0)
-    ax_b.set_ylim(0, 105)
-    ax_b.set_xticks([1, 10, 100, 500])
-    ax_b.set_xticklabels(['1', '10', '100', '500'])
-    ax_b.set_yticks([0, 25, 50, 75, 100])
-    ax_b.set_xlabel(r'Component area ($\mathrm{cm^2}$)', fontsize=7.5, labelpad=2.0)
-    ax_b.set_ylabel('Cumulative pixel share (%)', fontsize=7.5, labelpad=2.0)
-    style_axis(ax_b)
-    ax_b.legend(loc='upper left', frameon=True, facecolor='white', edgecolor='none', framealpha=0.90,
-                fontsize=7.0, handlelength=0.95, handletextpad=0.20, borderpad=0.05, labelspacing=0.12)
-
-    # Panel c: 64-Plot Yield Correlation Sensitivity across Upper Thresholds (181 DAS)
-    ax_c = fig.add_axes([0.736, y0, 0.244, h0], facecolor='white')
-    ax_c.set_axisbelow(True)
-    ax_c.grid(axis='both', lw=0.38, color='#F1F5F9', zorder=0.5)
-    ax_c.axhline(0.0, color='#64748B', lw=0.75, ls=':', zorder=1.5)
-    ax_c.axvline(3.0, color=PALETTE['amber'], lw=0.85, ls='--', zorder=1.8)
-
-    ax_c.plot(xk, sens['plot64_within_env_r'], 'o-', color=PALETTE['slate'], lw=1.05, ms=3.5, label=r'Apparent $r$', zorder=3.4)
-    ax_c.plot(xk, sens['plot64_within_N_block_r'], 'D-', color=PALETTE['teal'], lw=1.15, ms=3.7, label=r'Partial $r$ (N, block)', zorder=3.8)
-
-    ax_c.set_xlim(-0.3, len(sens) - 0.7)
-    ax_c.set_ylim(-0.68, 0.54)
-    ax_c.set_xticks(xk)
-    ax_c.set_xticklabels(xlbls, fontsize=7.0)
-    ax_c.set_yticks([-0.6, -0.3, 0.0, 0.3])
-    ax_c.set_xlabel(r'Upper area threshold ($\mathrm{cm^2}$)', fontsize=7.5, labelpad=2.0)
-    ax_c.set_ylabel(r'Correlation with yield ($r$)', fontsize=7.5, labelpad=2.0)
-    style_axis(ax_c)
-    ax_c.legend(loc='lower right', frameon=True, facecolor='white', edgecolor='none', framealpha=0.90,
-                fontsize=7.0, handlelength=0.95, handletextpad=0.20, borderpad=0.05, labelspacing=0.12)
-
-    save_supp_fig(fig, 'Figure_S2_boll_threshold_sensitivity')
 
 
 # ==============================================================================
-# SUPPLEMENTARY FIGURE S10: 2024 F1 Plot-Level Spatial Residual Maps & Moran's I
+# SUPPLEMENTARY FIGURE S2: 2024 F1 Plot-Level Spatial Residual Maps & Moran's I
 #                           (N+Leaf+T+3N0 vs. N+ResNet-50+3N0 Overlaid on Orthomosaic)
 # ==============================================================================
-def render_figure_s10() -> None:
+def render_figure_s2() -> None:
     import rasterio
     from rasterio.enums import Resampling
     from rasterio.features import geometry_mask
@@ -2682,7 +2581,7 @@ def render_figure_s10() -> None:
     fig.legend(handles=leg_handles, loc='center left', bbox_to_anchor=(0.526, 0.077),
                ncol=3, frameon=False, fontsize=7.0, columnspacing=0.65, handlelength=0.85, handletextpad=0.20)
 
-    save_supp_fig(fig, 'Figure_S4_spatial_residuals_2024F1')
+    save_supp_fig(fig, 'Figure_S2_spatial_residuals_2024F1')
 
 
 # ==============================================================================
@@ -2691,259 +2590,14 @@ def render_figure_s10() -> None:
 #   c-d: 3x3 Cross-Environment Precision & F1-Score Matrices (%)
 #   e-f: 30-ROI Full-Area Predicted Fraction vs. 36-Point Reference Bounds
 # ==============================================================================
-def render_figure_s1() -> None:
-    import geopandas as gpd
-    from matplotlib.patches import ConnectionPatch
-    import rasterio
-    from rasterio.features import geometry_mask
-    from rasterio.windows import Window, from_bounds as win_from_bounds, transform as win_transform
-
-    sys.path.insert(0, str(ROOT / '02_Code/src/data'))
-    from extract_raw_rgb_information import GPKG, crop as crop_roi, rules as seg_rules
-
-    fs.apply()
-    fig_w_mm, fig_h_mm = 180.0, 160.0
-    fig = plt.figure(figsize=(fig_w_mm / 25.4, fig_h_mm / 25.4), facecolor='white')
-
-    pts_ref = pd.read_csv(OLD_MINING / 'ai_reference/AI_reference_points.csv')
-    gdf_roi = gpd.read_file(GPKG, layer='inward_buffer_plot')
-
-    tile_mm = 43.0
-    tile_w = tile_mm / fig_w_mm
-    tile_h = tile_mm / fig_h_mm
-    col_lefts = [0.082, 0.398, 0.714]
-    row_ys = [0.668, 0.376]
-
-    col_titles = [
-        r'Full 0.5 m ROI & $6{\times}6$ strata',
-        '3.3 mm sRGB close-up',
-        'Segmented binary mask',
-    ]
-    for c_i, c_ttl in enumerate(col_titles):
-        fig.text(col_lefts[c_i] + tile_w / 2.0, row_ys[0] + tile_h + 0.012, c_ttl,
-                 ha='center', va='bottom', fontsize=7.2, fontweight='bold', color=INK)
-
-    phase_specs = [
-        ('a', 'canopy', '2024-08-21', 'green_canopeo', row_ys[0],
-         '128 DAS: Canopy foliage', PALETTE['teal'], np.array([13, 148, 136]), '#10B981'),
-        ('b', 'cotton', '2024-10-13', 'white_b140_s30', row_ys[1],
-         '181 DAS: Exposed fiber', PALETTE['cerulean'], np.array([56, 189, 248]), '#38BDF8'),
-    ]
-
-    for p_let, phase, day_str, rule_key, ypos, side_lbl, accent_col, tint_rgb, pt_fg_col in phase_specs:
-        fig.text(0.014, ypos + tile_h, p_let, fontweight='bold', fontsize=9, color='#111111', va='top', ha='left')
-        fig.text(0.048, ypos + tile_h / 2.0, side_lbl, rotation=90,
-                 ha='center', va='center', fontsize=7.4, fontweight='bold', color=accent_col)
-
-        rpath = ROOT / f'01_Data/raw/remote_sensing/orthomosaics/2024/{day_str}_f02_visible_orthomosaic.tif'
-        with rasterio.open(rpath) as src:
-            pix = abs(src.transform.a)
-            geom_roi = gdf_roi[
-                (gdf_roi.year == 2024) & (gdf_roi.field == 'F2') & (gdf_roi.plot_id == 6)
-            ].to_crs(src.crs).geometry.iloc[0]
-            full_rgb, full_valid = crop_roi(src, geom_roi)
-            w_roi = win_from_bounds(*geom_roi.bounds, src.transform).round_offsets().round_lengths()
-            fh, fw = full_rgb.shape[:2]
-            side = max(fh, fw)
-            pad_y = (side - fh) // 2
-            pad_x = (side - fw) // 2
-            w_sq = Window(w_roi.col_off - pad_x, w_roi.row_off - pad_y, side, side)
-            sq_rgb = np.moveaxis(src.read([1, 2, 3], window=w_sq, boundless=True, fill_value=0), 0, 2)
-            sq_inside = geometry_mask([geom_roi], out_shape=(side, side),
-                                      transform=win_transform(w_sq, src.transform), invert=True)
-            sq_t = win_transform(w_sq, src.transform)
-
-        full_mask = seg_rules(full_rgb, full_valid)[rule_key]
-        full_pct_str = f'ROI = {100.0 * full_mask.sum() / full_valid.sum():.1f}%'
-        cy, cx = fh // 2, fw // 2
-
-        # Tile 0: Full 0.5 m inward-buffered ROI + 6x6 strata + 36 stratified points
-        ax_r = fig.add_axes([col_lefts[0], ypos, tile_w, tile_h], facecolor='white')
-        canvas_roi = np.clip(sq_rgb, 0, 255).astype(np.float32)
-        canvas_roi[~sq_inside] = canvas_roi[~sq_inside] * 0.42
-        ax_r.imshow(np.clip(canvas_roi, 0, 255).astype(np.uint8), interpolation='lanczos')
-        ax_r.set_xlim(0, side)
-        ax_r.set_ylim(side, 0)
-        ax_r.set_xticks([])
-        ax_r.set_yticks([])
-
-        rx, ry = geom_roi.exterior.xy
-        px_roi, py_roi = (~sq_t) * (np.asarray(rx), np.asarray(ry))
-        ax_r.plot(px_roi, py_roi, color='#FBBF24', lw=0.95, ls='--', zorder=4)
-
-        for s_idx in range(1, 6):
-            ax_r.plot([pad_x, pad_x + fw], [pad_y + fh * s_idx / 6.0, pad_y + fh * s_idx / 6.0],
-                      color='white', lw=0.45, ls=':', alpha=0.72, zorder=3)
-            ax_r.plot([pad_x + fw * s_idx / 6.0, pad_x + fw * s_idx / 6.0], [pad_y, pad_y + fh],
-                      color='white', lw=0.45, ls=':', alpha=0.72, zorder=3)
-
-        sub_pts = pts_ref[(pts_ref.domain == '2024_F2') & (pts_ref.plot_id == 6) & (pts_ref.phase == phase)]
-        px_true = pad_x + sub_pts.x.to_numpy(float)
-        py_true = pad_y + sub_pts.y.to_numpy(float)
-        target_lbl = 'g' if phase == 'canopy' else 'c'
-        is_fg = (sub_pts.label == target_lbl).to_numpy()
-        is_unc = (sub_pts.label == 'u').to_numpy()
-        is_bg = ~(is_fg | is_unc)
-        if is_fg.any():
-            ax_r.scatter(px_true[is_fg], py_true[is_fg], s=18,
-                         facecolors=pt_fg_col, edgecolors='white', linewidths=0.55, zorder=5.2)
-        if is_bg.any():
-            ax_r.scatter(px_true[is_bg], py_true[is_bg], s=15,
-                         facecolors='white', edgecolors='#0F172A', linewidths=0.55, zorder=5.0)
-        if is_unc.any():
-            ax_r.scatter(px_true[is_unc], py_true[is_unc], s=16,
-                         facecolors='none', edgecolors='#FBBF24', linewidths=0.80, zorder=5.1)
-
-        zx0, zy0, zs = pad_x + cx - 192, pad_y + cy - 192, 384
-        ax_r.add_patch(Rectangle((zx0, zy0), zs, zs, fill=False,
-                                 edgecolor=PALETTE['terracotta'], lw=1.15, zorder=6))
-
-        bar_1m = 1.0 / pix
-        ax_r.plot([side - 38 - bar_1m, side - 38], [side - 52, side - 52], color='#0F172A', lw=2.3, zorder=5.8)
-        ax_r.plot([side - 38 - bar_1m, side - 38], [side - 52, side - 52], color='white', lw=1.25, zorder=6.0)
-        ax_r.text(side - 38 - bar_1m / 2.0, side - 74, '1 m', ha='center', va='bottom',
-                  fontsize=7.0, fontweight='bold', color='white',
-                  path_effects=[pe.withStroke(linewidth=1.5, foreground='#0F172A')], zorder=6.2)
-        for sp in ax_r.spines.values():
-            sp.set_visible(True)
-            sp.set_edgecolor('#64748B')
-            sp.set_linewidth(0.65)
-
-        # Central 384x384 close-up patch directly from full_rgb / full_valid
-        raw_sub = np.clip(full_rgb[cy - 192:cy + 192, cx - 192:cx + 192], 0, 255).astype(np.uint8)
-        val_sub = full_valid[cy - 192:cy + 192, cx - 192:cx + 192]
-        mask_sub = seg_rules(raw_sub, val_sub)[rule_key]
-        overlay = raw_sub.astype(np.float32)
-        overlay[mask_sub] = 0.34 * overlay[mask_sub] + 0.66 * tint_rgb
-        overlay = np.clip(overlay, 0, 255).astype(np.uint8)
-        hh, ww = raw_sub.shape[:2]
-
-        tile_axes = [ax_r]
-        for k_idx, img_arr in enumerate((raw_sub, overlay)):
-            ax_sub = fig.add_axes([col_lefts[k_idx + 1], ypos, tile_w, tile_h], facecolor='white')
-            ax_sub.imshow(img_arr, interpolation='lanczos')
-            ax_sub.set_xlim(0, ww)
-            ax_sub.set_ylim(hh, 0)
-            ax_sub.set_xticks([])
-            ax_sub.set_yticks([])
-            if k_idx == 0:
-                bar_05 = 0.5 / pix
-                ax_sub.plot([ww - 20 - bar_05, ww - 20], [hh - 20, hh - 20], color='#0F172A', lw=2.3, zorder=4.8)
-                ax_sub.plot([ww - 20 - bar_05, ww - 20], [hh - 20, hh - 20], color='white', lw=1.25, zorder=5.0)
-                ax_sub.text(ww - 20 - bar_05 / 2.0, hh - 28, '0.5 m', ha='center', va='bottom',
-                            fontsize=7.0, fontweight='bold', color='white',
-                            path_effects=[pe.withStroke(linewidth=1.5, foreground='#0F172A')], zorder=5.2)
-            else:
-                ax_sub.text(
-                    0.05, 0.95, full_pct_str, transform=ax_sub.transAxes, ha='left', va='top',
-                    fontsize=7.0, fontweight='bold', color='white', zorder=6,
-                    bbox=dict(boxstyle='round,pad=0.10', fc='#0F172A', ec=pt_fg_col, lw=0.55, alpha=0.84),
-                )
-            for sp in ax_sub.spines.values():
-                sp.set_visible(True)
-                sp.set_edgecolor(PALETTE['terracotta'] if k_idx == 0 else accent_col)
-                sp.set_linewidth(0.85 if k_idx == 0 else 0.75)
-            tile_axes.append(ax_sub)
-
-        # Zoom connector lines from 384x384 box in Tile 0 to Tile 1
-        for y_src, y_dst in [(zy0, 0), (zy0 + zs, hh)]:
-            con = ConnectionPatch(
-                xyA=(zx0 + zs, y_src), coordsA=ax_r.transData,
-                xyB=(0, y_dst), coordsB=tile_axes[1].transData,
-                linestyle='--', linewidth=0.65, color=PALETTE['terracotta'], alpha=0.82, zorder=8,
-            )
-            fig.add_artist(con)
-
-    # Shared stratified-point legend centered cleanly below Row 2
-    s1_leg = [
-        Line2D([], [], ls='', marker='o', ms=4.5, mfc='#10B981', mec='white', mew=0.55, label='Foliage target (128 DAS)'),
-        Line2D([], [], ls='', marker='o', ms=4.5, mfc='#38BDF8', mec='white', mew=0.55, label='Fiber target (181 DAS)'),
-        Line2D([], [], ls='', marker='o', ms=4.2, mfc='white', mec='#0F172A', mew=0.60, label='Background'),
-        Line2D([], [], ls='', marker='o', ms=4.3, mfc='none', mec='#FBBF24', mew=0.85, label='Uncertain boundary'),
-    ]
-    fig.legend(handles=s1_leg, loc='upper center', bbox_to_anchor=(0.520, 0.356),
-               ncol=4, frameon=False, columnspacing=1.15, handletextpad=0.28, fontsize=7.0)
-
-    # Bottom Row (c, d, e, f): 3x3 Cross-Environment Matrices + 30-ROI Full-Area Validation
-    y_bot, h_bot = 0.068, 0.198
-    m_val = pd.read_csv(OLD_MINING / 'ai_reference/AI_mask_validation_metrics.csv').query("phase == 'cotton'")
-    env_disp = [fs.ENV_LABELS[d] for d in DOMAINS]
-
-    mat_xs = [0.092, 0.312]
-    mat_w = 0.184
-    for idx_m, (m_let, m_col, m_title) in enumerate([
-        ('c', 'precision', 'Boll precision (%)'),
-        ('d', 'F1', r'Boll $F_1$-score (%)'),
-    ]):
-        fig.text(mat_xs[idx_m] - 0.022, y_bot + h_bot + 0.036, m_let,
-                 fontweight='bold', fontsize=9, color='#111111', va='top', ha='left')
-        ax_m = fig.add_axes([mat_xs[idx_m], y_bot, mat_w, h_bot], facecolor='white')
-        mat_arr = (
-            m_val.pivot(index='calibration_source', columns='validation_domain', values=m_col)
-            .reindex(index=DOMAINS, columns=DOMAINS)
-            .to_numpy(float) * 100.0
-        )
-        ax_m.imshow(mat_arr, aspect='auto', vmin=42.0, vmax=96.0, cmap=Q1_LEAF_CMAP)
-        for edge_v in (0.5, 1.5):
-            ax_m.axhline(edge_v, color='white', lw=1.0)
-            ax_m.axvline(edge_v, color='white', lw=1.0)
-        for ri, ci in np.ndindex(mat_arr.shape):
-            val_ij = mat_arr[ri, ci]
-            ax_m.text(ci, ri, f'{val_ij:.0f}', ha='center', va='center', fontsize=7.2,
-                      fontweight='bold', color='white' if val_ij >= 78.0 else INK)
-        ax_m.set_xticks([0, 1, 2])
-        ax_m.set_xticklabels(env_disp, fontsize=7.0)
-        ax_m.set_yticks([0, 1, 2])
-        ax_m.set_yticklabels(env_disp if idx_m == 0 else ['', '', ''], fontsize=7.0)
-        ax_m.tick_params(axis='both', length=0, pad=2.2)
-        ax_m.set_xlabel('Validation target', fontsize=7.5, labelpad=2.4)
-        if idx_m == 0:
-            ax_m.set_ylabel('Calibration source', fontsize=7.5, labelpad=2.5)
-        ax_m.set_title(m_title, fontsize=7.5, fontweight='bold', color=INK, pad=4.5)
-        for sp in ax_m.spines.values():
-            sp.set_visible(True)
-            sp.set_edgecolor('#CBD5E1')
-            sp.set_linewidth(0.55)
-
-    area_val = pd.read_csv(OLD_MINING / 'ai_reference/AI_ROI_area_validation.csv').query(
-        'calibration_source == validation_domain'
-    )
-    roi_xs = [0.566, 0.794]
-    roi_w = 0.186
-    for idx_a, (a_let, ph_key, a_title, a_col, ylims, yticks) in enumerate([
-        ('e', 'canopy', 'Canopy ROI (128/130 DAS)', PALETTE['teal'], (26, 102), [30, 50, 70, 90]),
-        ('f', 'cotton', 'Boll ROI (181 DAS)', PALETTE['plum'], (0, 50), [0, 15, 30, 45]),
-    ]):
-        fig.text(roi_xs[idx_a] - 0.022, y_bot + h_bot + 0.036, a_let,
-                 fontweight='bold', fontsize=9, color='#111111', va='top', ha='left')
-        ax_a = fig.add_axes([roi_xs[idx_a], y_bot, roi_w, h_bot], facecolor='white')
-        ax_a.set_axisbelow(True)
-        ax_a.grid(axis='both', lw=0.38, color='#F1F5F9', zorder=0.5)
-        z_a = area_val[area_val.phase == ph_key].sort_values('predicted_full_ROI_fraction')
-        xv = np.arange(1, len(z_a) + 1, dtype=float)
-        ax_a.vlines(xv, 100.0 * z_a.reference_fraction_lower, 100.0 * z_a.reference_fraction_upper,
-                    color='#94A3B8', lw=0.80, zorder=2.0)
-        ax_a.scatter(xv, 100.0 * z_a.predicted_full_ROI_fraction, s=11,
-                     facecolor=a_col, edgecolor='#0F172A', linewidth=0.30, zorder=3.5)
-        ax_a.set_xlim(0.0, 31.0)
-        ax_a.set_ylim(*ylims)
-        ax_a.set_xticks([1, 10, 20, 30])
-        ax_a.set_yticks(yticks)
-        ax_a.set_xlabel('Validation ROI rank', fontsize=7.5, labelpad=2.2)
-        if idx_a == 0:
-            ax_a.set_ylabel('Area fraction (%)', fontsize=7.5, labelpad=2.0)
-        ax_a.set_title(a_title, fontsize=7.5, fontweight='bold', color=INK, pad=4.5)
-        style_axis(ax_a)
-
-    save_supp_fig(fig, 'Figure_S1_segmentation_audit')
 
 
 # ==============================================================================
-# SUPPLEMENTARY FIGURE S3: Forward-Only Recursive Forecast Trajectories Across
+# SUPPLEMENTARY FIGURE S1: Forward-Only Recursive Forecast Trajectories Across
 #                          Calendar (DAS) and Thermal-Time (GDD10) Clocks
 #                          (6 Remaining Tasks Complementing Fig. 6a, Including N+Leaf+T)
 # ==============================================================================
-def render_figure_s3() -> None:
+def render_figure_s1() -> None:
     fs.apply()
     fig_w_mm, fig_h_mm = 180.0, 168.0
     fig = plt.figure(figsize=(fig_w_mm / 25.4, fig_h_mm / 25.4), facecolor='white')
@@ -3047,7 +2701,7 @@ def render_figure_s3() -> None:
     fig.text(0.192, 0.515, r'Total $\Delta\mathrm{RMSE}$ vs. $N$-only ($\mathrm{kg\ ha^{-1}}$; $\leftarrow$ worse | better $\rightarrow$)',
              rotation=90, ha='center', va='center', fontsize=8.0, color=INK)
 
-    save_supp_fig(fig, 'Figure_S3_recursive_timing')
+    save_supp_fig(fig, 'Figure_S1_recursive_timing')
 
 
 def main() -> None:
@@ -3060,11 +2714,9 @@ def main() -> None:
     render_figure5()
     render_figure6()
     render_figure_s1()
-    render_figure_s9()
-    render_figure_s3()
-    render_figure_s10()
+    render_figure_s2()
     clean_stale_supplementary_assets()
-    print('Successfully rendered Q1 flagship Main Figures 1-6 and Supplementary Figures S1-S4.')
+    print('Successfully rendered Q1 flagship Main Figures 1-6 and Supplementary Figures S1-S2.')
 
 
 if __name__ == '__main__':

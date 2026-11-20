@@ -1,7 +1,0 @@
-domain,role,point_n,g,c,b,u,has_cotton_positive,has_known_non_cotton,two_class_support
-2023_F1,calibration,108,98,0,10,0,False,True,False
-2023_F1,validation,360,243,0,117,0,False,True,False
-2024_F1,calibration,108,75,0,33,0,False,True,False
-2024_F1,validation,360,250,0,110,0,False,True,False
-2024_F2,calibration,108,84,0,24,0,False,True,False
-2024_F2,validation,360,251,10,99,0,True,True,True
