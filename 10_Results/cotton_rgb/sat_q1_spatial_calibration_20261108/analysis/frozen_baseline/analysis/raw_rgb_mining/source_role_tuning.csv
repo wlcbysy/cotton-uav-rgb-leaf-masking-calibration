@@ -1,0 +1,13 @@
+variant,source,algorithm,specification,role,train_n,alpha,inner_RMSE
+source_image_calibration,2023_F1,PartialRidge,N,full_source,24,100000,715.773072327
+source_image_calibration,2023_F1,PartialRidge,N_B,full_source,24,1,609.134027356
+source_image_calibration,2023_F1,PartialRidge,N_C_B,full_source,24,0.1,550.573366921
+source_image_calibration,2023_F1,PartialRidge,N_C_T_B,full_source,24,0.1,582.62204929
+source_image_calibration,2024_F1,PartialRidge,N,full_source,19,100000,687.656413352
+source_image_calibration,2024_F1,PartialRidge,N_B,full_source,19,100000,687.657477479
+source_image_calibration,2024_F1,PartialRidge,N_C_B,full_source,19,10,663.007722175
+source_image_calibration,2024_F1,PartialRidge,N_C_T_B,full_source,19,10,666.549311386
+source_image_calibration,2024_F2,PartialRidge,N,full_source,21,100000,410.083344819
+source_image_calibration,2024_F2,PartialRidge,N_B,full_source,21,10,406.241299109
+source_image_calibration,2024_F2,PartialRidge,N_C_B,full_source,21,10,337.718747175
+source_image_calibration,2024_F2,PartialRidge,N_C_T_B,full_source,21,10,344.533617671

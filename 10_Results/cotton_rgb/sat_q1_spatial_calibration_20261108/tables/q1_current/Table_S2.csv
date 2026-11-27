@@ -1,0 +1,18 @@
+Model specification,Window (DAS),Target normalization regime,BlockCV RMSE (k=0),BlockCV R2,Adj.-field RMSE (k=0),Adj.-field RMSE (k=3),Adj.-field R2 (k=3),Cross-year RMSE (k=0),Cross-year RMSE (k=3),Cross-year R2 (k=3)
+RGB-only Mixed ExG,92–142,Source-only std. (0 target strips),1364.5,−0.09,1469.1,1542.9,−0.14,1428.2,1263.5,0.05
+RGB-only Mixed C+T,92–142,Source-only std. (0 target strips),1070.4,0.26,869.9,811.9,0.68,1359.0,1053.7,0.30
+RGB-only Mixed C+T + Bmorph,92–181,Source-only std. (0 target strips),1045.8,0.30,823.0,695.1,0.77,1308.4,1101.8,0.25
+RGB-only Decoupled Leaf+Gap+T,92–142,Source-only std. (0 target strips),1174.0,0.12,927.9,914.7,0.58,1524.1,940.3,0.46
+RGB-only Decoupled + Bmorph,92–181,Source-only std. (0 target strips),1543.7,−0.39,918.2,735.0,0.74,1227.9,930.5,0.46
+RGB-only Mixed C+T + Bmorph,92–181,Standard N225 strip-centered,1045.8,0.30,736.0,695.1,0.77,1686.3,1101.8,0.25
+RGB-only Decoupled Leaf+Gap+T,92–142,Standard N225 strip-centered,1174.0,0.12,860.1,914.7,0.58,1558.1,940.3,0.46
+RGB-only Decoupled + Bmorph,92–181,Standard N225 strip-centered,1543.7,−0.39,731.4,735.0,0.74,1677.8,930.5,0.46
+RGB-only Decoupled Leaf+Gap+T,92–142,Two-point N0 + N225 strip scale,1172.6,0.12,1018.4,1020.5,0.48,1520.8,1116.0,0.24
+RGB-only Mixed C+T + Bmorph,92–181,Within-trial block zblk,870.2,0.53,811.7,731.7,0.75,1288.9,1017.0,0.37
+RGB-only Mixed ExG,92–142,Within-trial block zblk,1434.2,−0.21,1452.1,1516.7,−0.09,1541.8,1331.7,−0.03
+RGB-only Mixed C+T,92–142,Within-trial block zblk,845.5,0.56,800.1,717.7,0.76,1307.4,1040.2,0.34
+RGB-only Decoupled Leaf+Gap+T,92–142,Within-trial block zblk,902.3,0.51,875.3,857.3,0.65,1211.3,904.5,0.51
+RGB-only Decoupled + Bmorph,92–181,Within-trial block zblk (Fig. 3b),898.3,0.50,801.6,763.0,0.73,1192.6,879.6,0.54
+Recorded-N baseline (N-only),Sowing plan,Known plot N rate (source std.),604.5,0.76,723.7,650.5,0.80,1158.7,648.6,0.73
+N-integrated Mixed C+T+Bmorph,92–181,Known plot N rate (source std.),604.5,0.76,550.3,551.0,0.85,680.0,531.8,0.80
+N-integrated Decoupled Leaf+T+Bmorph,92–181,Known plot N rate (source std.; Fig. 3b),610.5,0.75,551.9,555.8,0.85,696.8,530.3,0.80

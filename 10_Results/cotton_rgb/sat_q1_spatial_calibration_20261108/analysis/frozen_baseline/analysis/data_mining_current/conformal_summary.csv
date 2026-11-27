@@ -1,0 +1,37 @@
+source,target,evaluation,model,coverage,mean_width,target_n,calibration_n_min,calibration_n_max,status,coverage_uncertainty
+2023_F1,2023_F1,BlockCV,N-only,,,21,7,7,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
+2023_F1,2023_F1,BlockCV,N+N0,,,21,7,7,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
+2023_F1,2023_F1,BlockCV,N+C+T,,,21,7,7,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
+2023_F1,2023_F1,BlockCV,ResNet-50,,,21,7,7,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
+2023_F1,2024_F1,cross_year,N-only,1.0,inf,16,7,7,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2023_F1,2024_F1,cross_year,N+N0,1.0,inf,16,7,7,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2023_F1,2024_F1,cross_year,N+C+T,1.0,inf,16,7,7,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2023_F1,2024_F1,cross_year,ResNet-50,1.0,inf,16,7,7,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2023_F1,2024_F2,cross_year,N-only,1.0,inf,18,7,7,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2023_F1,2024_F2,cross_year,N+N0,1.0,inf,18,7,7,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2023_F1,2024_F2,cross_year,N+C+T,1.0,inf,18,7,7,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2023_F1,2024_F2,cross_year,ResNet-50,1.0,inf,18,7,7,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F1,2023_F1,cross_year,N-only,1.0,inf,21,4,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F1,2023_F1,cross_year,N+N0,1.0,inf,21,4,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F1,2023_F1,cross_year,N+C+T,1.0,inf,21,4,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F1,2023_F1,cross_year,ResNet-50,1.0,inf,21,4,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F1,2024_F1,BlockCV,N-only,,,16,4,6,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
+2024_F1,2024_F1,BlockCV,N+N0,,,16,4,6,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
+2024_F1,2024_F1,BlockCV,N+C+T,,,16,4,6,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
+2024_F1,2024_F1,BlockCV,ResNet-50,,,16,4,6,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
+2024_F1,2024_F2,adjacent_field,N-only,1.0,inf,18,4,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F1,2024_F2,adjacent_field,N+N0,1.0,inf,18,4,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F1,2024_F2,adjacent_field,N+C+T,1.0,inf,18,4,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F1,2024_F2,adjacent_field,ResNet-50,1.0,inf,18,4,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F2,2023_F1,cross_year,N-only,1.0,inf,21,6,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F2,2023_F1,cross_year,N+N0,1.0,inf,21,6,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F2,2023_F1,cross_year,N+C+T,1.0,inf,21,6,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F2,2023_F1,cross_year,ResNet-50,1.0,inf,21,6,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F2,2024_F1,adjacent_field,N-only,1.0,inf,16,6,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F2,2024_F1,adjacent_field,N+N0,1.0,inf,16,6,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F2,2024_F1,adjacent_field,N+C+T,1.0,inf,16,6,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F2,2024_F1,adjacent_field,ResNet-50,1.0,inf,16,6,6,VACUOUS_INFINITY,Vacuous 100%; no useful finite-width coverage estimate. Only three target blocks.
+2024_F2,2024_F2,BlockCV,N-only,,,18,6,6,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
+2024_F2,2024_F2,BlockCV,N+N0,,,18,6,6,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
+2024_F2,2024_F2,BlockCV,N+C+T,,,18,6,6,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
+2024_F2,2024_F2,BlockCV,ResNet-50,,,18,6,6,NOT_ESTIMABLE_NESTED_BLOCK_SPLIT,Not estimable under unchanged nested block protocol; no coverage estimate.
